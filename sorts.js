@@ -38,10 +38,48 @@ function bubbleSort(arr) {
      return arr
  }
 
+ /**
+  * This implementation avoids multiple swaps on every comparison
+  */
+ /* function insertionSort(arr) {
+    for(let i=1;i<arr.length;i++) {
+        let tempMin = i
+        for(j=i-1;j>=0;j--) {
+            if(arr[i]<arr[j]) {
+                tempMin = j
+            } else
+                break;
+        }
+        //Remove zero elements from tempMin position and insert the element retrieved from 'i'th position after deleting it from there
+        arr.splice(tempMin, 0, arr.splice(i,1)[0])
+    }
+    return arr
+ } */
+
  function insertionSort(arr) {
-     
+    console.log("Array is: ", arr)
+    let currentVal;
+    for(let i = 1; i < arr.length; i++){
+        currentVal = arr[i];
+        console.log("i: ", i)
+        console.log("currentVal: ", currentVal)
+        let j
+        for(j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+            console.log("j: ", j)
+            console.log("arr[j] ", arr[j])
+            console.log("arr[j+1] ", arr[j+1])
+            arr[j+1] = arr[j]
+        }
+        console.log("Value of replaceIndex: ", j+1)
+        console.log("Value in replaceIndex: ", arr[j+1])
+        arr[j+1] = currentVal;
+    }
+    return arr;
  }
 
-console.log(bubbleSort([8,1,22,39,4,55,0,7]));
+console.log(insertionSort([8,22,39,4,1,55,0,7]))
+
+/* console.log("\n\n\n")
+console.log(bubbleSort([8,22,39,4,1,55,0,7]));
 console.log("\n\n\n")
-console.log(selectionSort([8,1,22,39,4,55,0,7]));
+console.log(selectionSort([8,1,22,39,4,55,0,7])); */

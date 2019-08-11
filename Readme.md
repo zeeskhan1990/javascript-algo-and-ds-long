@@ -36,3 +36,12 @@ Selection Sort - In a single pass, find and 'select' the minimum value, and then
 Only advantage over bubble is it just does lesser swaps.
 
 Insertion Sort - Builds up the sort by gradually creating a larger left half which is sorted. So on every pass, it "inserts" an item at the correct position
+Some place where insertion sort can work well is where data is being streamed in or coming in parts, since insertion sort works by gradually sorting the left of the array so on new data appending the net sort that has to be done would be quite less
+
+Merge Sort - Three steps -> Split, Sort & Merge, until an array of length 0 or 1 because an array with 0 or 1 elem is already sorted
+Complexity - Best, Average & Worst - O(nlog n)
+
+Quick Sort - Best and average is O(nlog n) because log n decompositions everytime, and in every pass there are n comparisons.
+Now, for worst case (already sorted array) with pivot 0, each decomposition only gives us one element array, so effectively it goes on for n no of steps, therefore worst case complexity is (n*n) = O(n^2). This happens when the pivot is always the least or maximum element. To counter this we can pivot around random/middle element with the assumption that on every pass we won't be picking the least or max element every single time.
+
+

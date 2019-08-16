@@ -127,6 +127,22 @@ class GenericTree {
         }
         return path
     }
+
+    postOrderRecursion(root) {
+        const path = []
+        function traverse(node) {
+            const [firstChild, ...otherChildren] = node.children
+            if(firstChild) traverse(firstChild)
+            if(otherChildren.length > 0) {
+                for(let child of otherChildren) {
+                    traverse(child)
+                }
+            }
+            path.push(node.val)
+        }
+        traverse(root)
+        return path
+    }
 }
 
 let root = new TreeNode(1) 
@@ -160,3 +176,5 @@ postRoot.children[1].children.push(new TreeNode(20))
 const postTreeTraversal = new GenericTree()
 console.log(postTreeTraversal.postorderTraversal(postRoot))
 console.log(postTreeTraversal.inorderTraversal(postRoot))
+
+console.log(postTreeTraversal.postOrderRecursion(postRoot))

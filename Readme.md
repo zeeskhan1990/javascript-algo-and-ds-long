@@ -136,3 +136,10 @@ Adjacency List : {
 Suitable for sparse graph due to less space requirement
 Faster to iterate over all edges
 Faster to lookup specific edge
+
+Dynamic Programming:
+Overlaping subproblems, and optimal substructures
+
+Memoization, tabular approach
+
+Example - fib(n) = fib(n-2) + fib(n-1)

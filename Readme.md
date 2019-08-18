@@ -67,4 +67,72 @@ One can start looking at nodes at each level of the tree, that is look up for th
 
 Or, you can look for the value following a trail in a certain direction of the tree to it's maximum depth. And if not found then trace back and look up in other un-visted trails. This is DFS. These can be of three types - Pre, Post and In Order.
 
+Bfs vs Dfs
 
+For a fully flushed tree with lots of nodes on each level, a bfs would cause lots of nodes to store in the queue at a time whereas in a dfs at any given time in a stack or recursion frame you are just storing one branch. So dfs would be better for an almost symmetrical heavily branched tree, for trees like few long branches and not as symmetrical bfs may be better.
+
+Time complexity is same O(n). The maximum height of a BST is O(logn)
+
+A Dfs in-order in case of BST results in an in-order sorted array, so when a sorted output is needed then in-order
+
+## Binary Heap
+A heap is a particular kind of a tree. MaxBinaryHeap - Parent > Child, MinBinaryHeap - Parent < Child
+BST => Left < Root < Right
+Binary Heap => Left & Right < Root || Left & Right > Root
+
+A Binary Heap - Can have max two child. All children of a node must be filled out before increasing depth. Left children must be filled first.
+
+A representation of binary heap in array happens as per a couple of mathematical formula:
+If a parent is at position 'n' it's left child is at 2n + 1, and it's right child is at 2n + 2
+If a child is at position 'n', the parent is at Math.floor( (n-1)/2 )
+
+## Priority Queue
+Binary Heaps are used to implement Priority Queues. Priority Queues are like queues as in they follow the FIFO format. But the node with higher priority stands earlier than the one with the lower priority. For two nodes with equal priorities the standard queue enqueue rules apply. Usually a priority with lower integer value indicates higher priority. So a Min Binary Heap is ideal for this use case. For "enqueue" in this priority queue you just call insert of that MinBinaryHeap and for "dequeue" you just call the "remove/extract min" of that heap. Remember, in most use cases a lower priority integer value represents higher priority
+
+It is better to implement a priority queue with a heap than with a list/array because in cases of huge lists, one would have to compare and search through the entire list to find the one with the highest priority. Here the access to the highest priority element is always much less and also while insertion the items do fall in place automatically as per their priority
+
+Complexity of insertion and deletion is O(log n) because one can max go the depth no of times when bubbling up or down, and height of a binary tree's upper bound is log n.
+Search is O(n) because there's no way to guarantee that the searched value can be found following a branch unlike BST. So one has to go through all elements
+
+## Hash Table / Hash Map
+So, a hash table is default to all languages. In JS, it is implemented as objects and maps. Now one can imagine a linear memory allocation such as an array. But there is no such default structure of memory allocation for object. So when you are storing something in an object, you under the hood are basically storing them in some linear memory allocation itself(remember malloc(), calloc()). 
+
+Let's say you have an object like {"pink": "#fb0027"}
+Now in some place in the memory the value "#fb0027" is stored. Consider that it's stored at some index in an array of length 100.
+So array[n] = "#fb0027". In order to look up values by keys, in this case "#fb0027" by "pink", we need a way to convert keys into valid array indices". The function that does this conversion from key to array index is called *Hashing function*
+
+Hashing function - Fast, should be almost constant time and not dependent on length of key to a great extent, output distributed uniformly, deterministic
+
+## Hashing Collision resolution
+Separate Chaining - At each index in our array we store using a complex data structure like array/linked list. For example -> darkblue = 4, salmon = 4. So at index 4 you have a nested array[["darkblue", "#03930"], ["salmon", "#fd3421"]]. So if you are looking for salmon key you hash, find index 4, and in 4 now you again look for a nested array having a value "salmon"
+
+Linear probing - It involves storing one value at each location. If a certain index is occupied seek ahead for the next available space.
+
+Complexity - 
+Insert, Deletion, Access - O(1) [Best & Average Case]
+O(n) - Worst case, since all the elements would be in the same index
+
+## Graph
+Graph = Nodes + Connections. A tree is a special type of graph
+Graph can be weighted and directed
+
+Adjacency Matrix : A B C D
+                A  0 1 0 1
+                B  1 0 1 1
+                C  0 1 0 0
+                D  1 1 0 0
+
+Not suitable for sparse graph
+Slower to iterate over all edges
+Slower to lookup specific edge
+
+Adjacency List : {
+                    "A": ["B", "D"],
+                    "B": ["A", "C", "D"],
+                    "C": ["B" ],
+                    "D": ["A", "B"]
+                }
+
+Suitable for sparse graph due to less space requirement
+Faster to iterate over all edges
+Faster to lookup specific edge

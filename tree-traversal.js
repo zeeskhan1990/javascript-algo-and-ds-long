@@ -34,9 +34,9 @@ class GenericTree {
     }
     /**
      * This uses a stack. Dfs means traverse one route deptwise completely and then to alternate ones
-     * Preorder in BST means first root, then left, and then right. For an n-ary tree there are no
+     * Preorder in BST/BT means first root, then left, and then right. For an n-ary tree there are no
      * left & right defined, so we iterate over all the children in the array. So this essentially means
-     * first root, then children. To maintain similarity with BST, first children is considered to be left, rest
+     * first root, then children. To maintain similarity with BST/BT, first children is considered to be left, rest
      * all are right
      */
     preorderTraversal(root) {
@@ -60,9 +60,9 @@ class GenericTree {
     }
     /**
      * This uses a stack. Dfs means traverse one route deptwise completely and then to alternate ones
-     * Postorder in BST means first left, then right and then root. For an n-ary tree there are no
+     * Postorder in BST/BT means first left, then right and then root. For an n-ary tree there are no
      * left & right defined, so we iterate over all the children in the array. So this essentially means
-     * first children, then root. To maintain similarity with BST, first children is considered to be left, rest
+     * first children, then root. To maintain similarity with BST/BT, first children is considered to be left, rest
      * all are right. 
      */
     postorderTraversal(root) {
@@ -95,7 +95,7 @@ class GenericTree {
     }
     /**
      * YOU CAN'T REALLY DO AN INORDER WITH N-ARY BECAUSE NO CLEAR LEFT & RIGHT IS DEFINED
-     * Inorder in BST means first left, then root and then right. For an n-ary tree there are no
+     * Inorder in BST/BT means first left, then root and then right. For an n-ary tree there are no
      * left & right defined,and unlike pre & post order where left & right followed each other so 
      * you could club it as children that can't be done here. For the sake of operation, the first child 
      * has been considered as left, but diagram wise it can very well be a case where a node has only

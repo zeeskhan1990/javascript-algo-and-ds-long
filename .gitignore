@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/Resources
+
 # dependencies
 /node_modules
 /.pnp
@@ -29,8 +31,6 @@ yarn-error.log*
 firebase-debug.log
 .firebase
 firestore-debug.log
-
-/Resources
 
 
 
